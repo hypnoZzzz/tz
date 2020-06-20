@@ -27,7 +27,7 @@ def format_check():
     max_read_size_jpg = max(len(m) for m in magic_numbers_jpg.values())
     format = []
 
-    os.chdir("uploads")
+    os.chdir('uploads')
 
     def png():
         for x in glob.glob("*png"):
@@ -37,7 +37,7 @@ def format_check():
             if file_head.startswith(magic_numbers_png['png']):
                 format.append('png')
             else:
-                return "Error 302"
+                format.append("Error 302")
 
     def jpg():
         for y in glob.glob("*jpg"):
@@ -47,7 +47,7 @@ def format_check():
             if file_head.startswith(magic_numbers_jpg['jpg']):
                 format.append('jpg')
             else:
-                return "Error 302"
+                format.append("Error 302")
     return format
 
 
@@ -56,9 +56,10 @@ def upload_file():
     """загружает файл и перенаправляет пользователя на URL с загруженным файлом"""
     if request.method == 'POST':
         file = request.files['file']
-        if file and allowed_file(file.filename):
+        if file and allowed_file(file.filename) and format != "Error 302":
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print(str(format))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
         else:
