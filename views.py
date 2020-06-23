@@ -28,18 +28,17 @@ def upload_file():
      и перенаправляет пользователя на URL с загруженным файлом"""
     if request.method == 'POST':
         file = request.files['file']
+
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            os.chdir('uploads')
-            with open(file.filename, 'rb') as fd:
+            with open('uploads/'+file.filename, 'rb') as fd:
                 file_head = fd.read()
             if file_head.startswith(magic_numbers_jpg['jpg']) or file_head.startswith(magic_numbers_png['png']):
                 return redirect(url_for('uploaded_file',
                                         filename=filename))
             else:
-                os.remove(file.filename)
-                return "Error 302. Invalid file format. Add image format 'jpg' or 'png'. File deleted"
+                return "Error 302. Invalid file format. Add image format 'jpg' or 'png'. File deleted", os.remove('uploads/'+file.filename)
     return '''
     <!doctype html>
     <title>Upload new File</title>
