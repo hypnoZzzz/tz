@@ -1,7 +1,7 @@
 1. Из директории проекта вызовите консоль
 2 пропишите команды:
 	pyton
-	from example import db
+	from views import db
 	db.create_all()
 	exit()
 	python example.py
