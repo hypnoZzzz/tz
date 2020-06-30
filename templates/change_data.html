@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}change data{% endblock %}
+
+{% block content %}
+
+<h2>Changes saved</h2>
+	<h4>name: "{{task.name}}", </h4>
+	<h4>task id: "{{task.id}}"</h4>
+	<h4>required height: "{{task.height}}"</h4>
+	<h4>required width: "{{task.width}}"</h4>
+
+	<a href="/search_task/">
+		<button>change</button>
+	</a>	
+
+{% endblock %}
+
+<!-- min="1" max="9999" -->

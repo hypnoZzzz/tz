@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}task saved{% endblock %}
+
+{% block content %}
+<form action="/processing/" method="POST" enctype="multipart/form-data">
+	<input type="number" name="task_id" placeholder="task id">
+	<button type="submit">go!</button>
+</form>
+{% endblock %}

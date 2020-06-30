@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}task saved{% endblock %}
+
+{% block content %}
+<h2>go</h2>
+<form action="/enter_id/" method="POST" enctype="multipart/form-data">
+	<input type="number" name="task_id">
+	<button type="submit">go!</button>
+</form>
+{% endblock %}

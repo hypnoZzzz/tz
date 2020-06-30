@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}enter file id{% endblock %}
+
+{% block content %}
+
+<h2>Enter file id:</h2>
+
+<form action="/enter_id/" method="POST" enctype="multipart/form-data">
+	<input type="number" name="id_file" placeholder="file id">
+<h2>Enter the required height and width:</h2>
+	<input type="number"number name="height" placeholder="height">
+	<input type="number" name="width" placeholder="width">
+	<button type="submit">change</button>
+</form>
+
+{% endblock %}

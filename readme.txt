@@ -1,9 +1,6 @@
 1. Из директории проекта вызовите консоль
 2 пропишите команды:
-	pyton
-	from views import db
-	db.create_all()
-	exit()
-	python example.py
+	pyton create_db.py
+	python app.py
 3. В Вашем браузере перейдите по адресу http://127.0.0.1:5000/             
 	     	
